@@ -39,16 +39,16 @@ public class Product extends AbstractLocalizedItem<ProductLocalized> {
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Composition
-    private Set<ProductLocalized> localizations = new HashSet<>();
+    private Set<ProductLocalized> localizedAttributes = new HashSet<>();
 
     @Override
-    public Set<ProductLocalized> getLocalizations() {
-        return localizations;
+    public Set<ProductLocalized> getLocalizedAttributes() {
+        return localizedAttributes;
     }
 
     public String getName() {
         //With fallback language as English
-        Map<String, ProductLocalized> toMap = localizations.stream().collect(Collectors.toMap(t -> t.getLanguage().getId(), t -> t));
+        Map<String, ProductLocalized> toMap = localizedAttributes.stream().collect(Collectors.toMap(t -> t.getLanguage().getId(), t -> t));
 
         if (toMap.get(LocalContext.getCurrentLocale()) == null) {
             if (toMap.get(LocalContext.getDefaultLocale()) == null) {
@@ -62,7 +62,7 @@ public class Product extends AbstractLocalizedItem<ProductLocalized> {
 
     public String getDescription() {
 // With fallback language as English
-        Map<String, ProductLocalized> toMap = localizations.stream().collect(Collectors.toMap(t -> t.getLanguage().getId(), t -> t));
+        Map<String, ProductLocalized> toMap = localizedAttributes.stream().collect(Collectors.toMap(t -> t.getLanguage().getId(), t -> t));
         if (toMap.get(LocalContext.getCurrentLocale()) == null) {
             if (toMap.get(LocalContext.getDefaultLocale()) == null) {
                 return null;

@@ -3,6 +3,7 @@ package org.anasoid.jmix.demo.core.entity.catalog;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import org.anasoid.jmix.demo.core.entity.i18n.Localized;
 
 @JmixEntity
@@ -32,5 +33,19 @@ public class ProductLocalized extends Localized<Product> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ITEM_PK", nullable = false, updatable = false)
+    @NotNull
+    @AssociationOverride(name = "item")
+    private Product item;
+
+
+    public Product getItem() {
+        return item;
+    }
+    public void setItem(Product item) {
+        this.item = item;
     }
 }

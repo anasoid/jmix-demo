@@ -11,7 +11,6 @@ dependencies {
     }
     testImplementation 'org.springframework.boot:spring-boot-starter-web'
 
-    testRuntimeOnly 'org.hsqldb:hsqldb'
 }
 
 test {
