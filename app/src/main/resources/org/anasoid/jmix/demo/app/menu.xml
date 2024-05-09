@@ -2,8 +2,23 @@
 <menu-config xmlns="http://jmix.io/schema/flowui/menu">
 
     <menu id="application" title="msg://org.anasoid.jmix.demo.app/menu.application.title" opened="true">
-        <item view="app_User.list" title="msg://org.anasoid.jmix.demo.app.view.user/UserListView.title"/>
-        <item view="core_Catalog.list" title="msg://org.anasoid.jmix.demo.app.view.catalog/catalogListView.title"/>
+        <menu id="core" title="core" opened="true">
+            <menu id="catalog" title="Catalog" opened="false">
+                <item view="core_Catalog.list"
+                      title="msg://org.anasoid.jmix.demo.app.view.catalog/catalogListView.title"/>
+                <item view="core_CatalogVersion.list"
+                      title="msg://org.anasoid.jmix.demo.app.view.catalogversion/catalogVersionListView.title"/>
+            </menu>
+            <menu id="system" title="System" opened="false">
+                <item view="Language.list"
+                      title="msg://org.anasoid.jmix.demo.app.view.language/languageListView.title"/>
+            </menu>
+        </menu>
+        <menu id="jmix" title="jmix" opened="false">
+            <item view="app_User.list" title="msg://org.anasoid.jmix.demo.app.view.user/UserListView.title"/>
+        </menu>
+
+
     </menu>
 
 </menu-config>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://catalogVersionListView.title"
+      focusComponent="catalogVersionsDataGrid">
+    <data>
+        <collection id="catalogVersionsDc"
+                    class="org.anasoid.jmix.demo.core.entity.catalog.CatalogVersion">
+            <fetchPlan extends="_base">
+                <property name="catalog" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="catalogVersionsDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from core_CatalogVersion e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="catalogVersionsDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="addBtn" action="catalogVersionsDataGrid.add"/>
+            <button id="createBtn" action="catalogVersionsDataGrid.create"/>
+            <button id="editBtn" action="catalogVersionsDataGrid.edit"/>
+            <button id="removeBtn" action="catalogVersionsDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="catalogVersionsDl"/>
+        </hbox>
+        <dataGrid id="catalogVersionsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="catalogVersionsDc"
+                  columnReorderingAllowed="true">
+            <actions>
+                <action id="add" type="list_add"/>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns resizable="true">
+                <column property="version"/>
+                <column property="catalog"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

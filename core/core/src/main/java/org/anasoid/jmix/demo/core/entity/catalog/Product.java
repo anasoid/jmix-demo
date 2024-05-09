@@ -17,7 +17,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @JmixEntity
-@Entity(name = "CORE_PRODUCT")
+@Table(name = "CORE_PRODUCT")
+@Entity(name = "core_Product")
 public class Product extends AbstractLocalizedItem<ProductLocalized> {
 
     @NotBlank

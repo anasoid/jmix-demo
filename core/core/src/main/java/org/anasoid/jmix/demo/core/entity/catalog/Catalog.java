@@ -1,5 +1,7 @@
 package org.anasoid.jmix.demo.core.entity.catalog;
 
+import io.jmix.core.MetadataTools;
+import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
@@ -22,11 +24,10 @@ public class Catalog extends AbstractAuditableItem {
     private String id;
 
     @NotBlank
-    @InstanceName
     @Column(name = "NAME")
     private String name;
 
-    @OneToMany(mappedBy = "catalog",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "catalog", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CatalogVersion> catalogVersions;
 
     public Set<CatalogVersion> getCatalogVersions() {
@@ -54,4 +55,11 @@ public class Catalog extends AbstractAuditableItem {
         this.name = name;
     }
 
+    @InstanceName
+    @DependsOnProperties({"id", "name"})
+    public String getInstanceName(MetadataTools metadataTools) {
+        return String.format("%s (%s)",
+                metadataTools.format(id),
+                metadataTools.format(name));
+    }
 }
