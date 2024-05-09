@@ -1,0 +1,3 @@
+rootProject.name = 'jmix-demo-all'
+
+includeBuild '../core'
