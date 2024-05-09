@@ -18,7 +18,6 @@
             <item view="app_User.list" title="msg://org.anasoid.jmix.demo.app.view.user/UserListView.title"/>
         </menu>
 
-
     </menu>
 
 </menu-config>

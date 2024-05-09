@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
       title="msg://catalogVersionDetailView.title"
-      focusComponent="form">
+      focusComponent="form"
+      extends="org/anasoid/jmix/demo/app/view/item/auditableItem-view.xml">
     <data>
-        <instance id="catalogVersionDc"
+        <instance id="itemDc"
                   class="org.anasoid.jmix.demo.core.entity.catalog.CatalogVersion">
             <fetchPlan extends="_base">
                 <property name="catalog" fetchPlan="_base"/>
@@ -19,7 +20,7 @@
         <action id="closeAction" type="detail_close"/>
     </actions>
     <layout>
-        <formLayout id="form" dataContainer="catalogVersionDc">
+        <formLayout id="form" dataContainer="itemDc">
             <textField id="versionField" property="version"/>
             <entityPicker id="catalogField" property="catalog">
                 <actions>
