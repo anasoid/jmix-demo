@@ -14,7 +14,7 @@ import java.time.OffsetDateTime;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractAuditableItem extends AbstractItem {
 
-    @Column(name = "REVESION", nullable = false)
+    @Column(name = "REVISION", nullable = false)
     @Version
     private Integer revision;
 
