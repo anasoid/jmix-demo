@@ -3,6 +3,7 @@
 
     <menu id="application" title="msg://org.anasoid.jmix.demo.app/menu.application.title" opened="true">
         <item view="app_User.list" title="msg://org.anasoid.jmix.demo.app.view.user/UserListView.title"/>
+        <item view="core_Catalog.list" title="msg://org.anasoid.jmix.demo.app.view.catalog/catalogListView.title"/>
     </menu>
 
 </menu-config>

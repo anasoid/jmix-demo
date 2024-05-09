@@ -46,13 +46,13 @@
     <changeSet id="10" author="core">
 
         <insert tableName="CORE_CATALOG" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
-            <column name="PK" value="0"/>
+            <column name="PK" value="-1"/>
             <column name="REVISION" value="1"/>
             <column name="ID" value="default"/>
             <column name="NAME" value="default"/>
         </insert>
         <insert tableName="CORE_CATALOG" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
-            <column name="PK" value="2"/>
+            <column name="PK" value="-2"/>
             <column name="REVISION" value="1"/>
             <column name="ID" value="electronicsProductCatalog"/>
             <column name="NAME" value="electronicsProductCatalog"/>
@@ -63,21 +63,21 @@
     <changeSet id="11" author="core">
 
         <insert tableName="CORE_CATALOG_VERSION" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
-            <column name="PK" value="1"/>
+            <column name="PK" value="-1"/>
             <column name="REVISION" value="1"/>
-            <column name="CATALOG" value="1"/>
+            <column name="CATALOG" value="-1"/>
             <column name="VERSION" value="stage"/>
         </insert>
         <insert tableName="CORE_CATALOG_VERSION" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
-            <column name="PK" value="2"/>
+            <column name="PK" value="-2"/>
             <column name="REVISION" value="1"/>
-            <column name="CATALOG" value="1"/>
+            <column name="CATALOG" value="-1"/>
             <column name="VERSION" value="online"/>
         </insert>
         <insert tableName="CORE_CATALOG_VERSION" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
-            <column name="PK" value="3"/>
+            <column name="PK" value="-3"/>
             <column name="REVISION" value="1"/>
-            <column name="CATALOG" value="2"/>
+            <column name="CATALOG" value="-2"/>
             <column name="VERSION" value="online"/>
         </insert>
 

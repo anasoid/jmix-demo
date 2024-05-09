@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://catalogDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="catalogDc"
+                  class="org.anasoid.jmix.demo.core.entity.catalog.Catalog">
+            <fetchPlan extends="_base">
+                <property name="catalogVersions" fetchPlan="_base"/>
+            </fetchPlan>
+            <collection id="catalogVersionsDc" property="catalogVersions"></collection>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="catalogDc">
+            <textField id="idField" property="id"/>
+            <textField id="nameField" property="name"/>
+        </formLayout>
+
+        <vbox id="catalogVersions" >
+            <dataGrid dataContainer="catalogVersionsDc" width="100%" id="catalogVersionsDataGrid">
+                <actions>
+                    <action id="add" type="list_add"/>
+                    <action id="create" type="list_create"/>
+                    <action id="edit" type="list_edit"/>
+                    <action id="remove" type="list_remove"/>
+                </actions>
+                <columns>
+                    <column property="version"/>
+                </columns>
+            </dataGrid>
+
+        </vbox>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>
