@@ -21,8 +21,6 @@
         <menu id="jmix" title="jmix" opened="false">
             <item view="app_User.list" title="msg://org.anasoid.jmix.demo.app.view.user/UserListView.title"/>
         </menu>
-        <item view="core_ProductLocalized.list"
-              title="msg://org.anasoid.jmix.demo.app.view.product/productLocalizedListView.title"/>
 
     </menu>
 
