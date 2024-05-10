@@ -11,9 +11,9 @@
             </fetchPlan>
             <loader/>
         </instance>
-        <collection id="languageDl" class="org.anasoid.jmix.demo.core.entity.i18n.Language">
+        <collection id="languageDc" class="org.anasoid.jmix.demo.core.entity.i18n.Language">
             <fetchPlan extends="_base"/>
-            <loader id="catalogVersionDl">
+            <loader id="languageDl">
                 <query>
                     <![CDATA[select e from Language e]]>
                 </query>
@@ -29,11 +29,11 @@
     </actions>
     <layout>
         <formLayout id="form" dataContainer="productLocalizedDc">
-            <entityComboBox id="languageField" property="language" itemsContainer="languageDl" />
+            <entityComboBox id="languageField" property="language" itemsContainer="languageDc"/>
             <entityPicker id="itemField" property="item" readOnly="true">
             </entityPicker>
             <textField id="nameField" property="name"/>
-            <textField id="descriptionField" property="description"/>
+            <textArea id="descriptionField" property="description" height="9.5em"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
