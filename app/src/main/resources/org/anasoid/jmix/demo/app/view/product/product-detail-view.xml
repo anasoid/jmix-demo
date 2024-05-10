@@ -28,20 +28,24 @@
     <layout>
         <formLayout id="form" dataContainer="itemDc">
             <textField id="codeField" property="code"/>
-            <datePicker id="startDateField" property="startDate"/>
-            <datePicker id="endDateField" property="endDate"/>
             <entityPicker id="catalogVersionField" property="catalogVersion">
                 <actions>
                     <action id="entityLookup" type="entity_lookup"/>
                     <action id="entityClear" type="entity_clear"/>
                 </actions>
             </entityPicker>
+            <datePicker id="startDateField" property="startDate"/>
+            <datePicker id="endDateField" property="endDate"/>
         </formLayout>
         <dataGrid id="localizedAttributesDataGrid" dataContainer="localizedAttributesDc" width="100%" minHeight="20em">
+            <actions>
+                <action id="add" type="list_add"/>
+                <action id="exclude" type="list_exclude"/>
+            </actions>
             <columns>
-                <column property="name"/>
-                <column property="description"/>
                 <column property="language"/>
+                <column property="name" />
+                <column property="description"/>
             </columns>
         </dataGrid>
         <h4 text="msg://org.anasoid.jmix.demo.core.entity.catalog/Product.categories"/>

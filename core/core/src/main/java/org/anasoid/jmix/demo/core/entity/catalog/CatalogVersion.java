@@ -1,7 +1,10 @@
 package org.anasoid.jmix.demo.core.entity.catalog;
 
 import io.jmix.core.DeletePolicy;
+import io.jmix.core.MetadataTools;
 import io.jmix.core.entity.annotation.OnDeleteInverse;
+import io.jmix.core.metamodel.annotation.DependsOnProperties;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -42,4 +45,12 @@ public class CatalogVersion extends AbstractAuditableItem {
         this.version = version;
     }
 
+    @InstanceName
+    @DependsOnProperties({"version", "catalog"})
+    public String getInstanceName(MetadataTools metadataTools) {
+        return String.format("%s:%s",
+                metadataTools.format(catalog.getId()),
+                metadataTools.format(version)
+                );
+    }
 }

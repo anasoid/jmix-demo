@@ -1,5 +1,6 @@
 package org.anasoid.jmix.demo.core.entity.catalog;
 
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -14,6 +15,7 @@ import java.util.List;
 public class Categorie extends AbstractAuditableItem {
 
 
+    @InstanceName
     @NotBlank
     @Column(name = "CODE", nullable = false)
     @NotNull

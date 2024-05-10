@@ -1,8 +1,11 @@
 package org.anasoid.jmix.demo.core.entity.catalog;
 
 import io.jmix.core.DeletePolicy;
+import io.jmix.core.MetadataTools;
 import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.metamodel.annotation.Composition;
+import io.jmix.core.metamodel.annotation.DependsOnProperties;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -40,6 +43,7 @@ public class Product extends AbstractLocalizedItem<ProductLocalized> {
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
     @Composition
     private Set<ProductLocalized> localizedAttributes = new HashSet<>();
+
     @JoinTable(name = "CORE_CATEGORIE_PRODUCT_LINK",
             joinColumns = @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PK"),
             inverseJoinColumns = @JoinColumn(name = "CATEGORIE_ID", referencedColumnName = "PK"))
@@ -102,4 +106,31 @@ public class Product extends AbstractLocalizedItem<ProductLocalized> {
         return toMap.get(LocalContext.getCurrentLocale()).getDescription();
     }
 
+    public void setCode(@NotBlank String code) {
+        this.code = code;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setCatalogVersion(@NotNull CatalogVersion catalogVersion) {
+        this.catalogVersion = catalogVersion;
+    }
+
+    public void setLocalizedAttributes(Set<ProductLocalized> localizedAttributes) {
+        this.localizedAttributes = localizedAttributes;
+    }
+
+    @InstanceName
+    @DependsOnProperties({"code", "catalogVersion"})
+    public String getInstanceName(MetadataTools metadataTools) {
+        return String.format("%s(%s)",
+                metadataTools.format(code),
+                metadataTools.format(catalogVersion));
+    }
 }
