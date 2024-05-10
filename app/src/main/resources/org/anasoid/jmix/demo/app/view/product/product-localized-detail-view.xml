@@ -27,14 +27,18 @@
         <action id="saveAction" type="detail_saveClose"/>
         <action id="closeAction" type="detail_close"/>
     </actions>
-    <layout>
-        <formLayout id="form" dataContainer="productLocalizedDc">
-            <entityComboBox id="languageField" property="language" itemsContainer="languageDc"/>
-            <entityPicker id="itemField" property="item" readOnly="true">
-            </entityPicker>
-            <textField id="nameField" property="name"/>
-            <textArea id="descriptionField" property="description" height="9.5em"/>
-        </formLayout>
+    <layout alignItems="STRETCH"
+            padding="false" spacing="false"
+            expand="contentBox">
+        <vbox id="contentBox" classNames="overflow-auto">
+            <formLayout id="form" dataContainer="productLocalizedDc">
+                <entityComboBox id="languageField" property="language" itemsContainer="languageDc"/>
+                <entityPicker id="itemField" property="item" readOnly="true">
+                </entityPicker>
+                <textField id="nameField" property="name"/>
+                <textArea id="descriptionField" property="description" height="9.5em"/>
+            </formLayout>
+        </vbox>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
             <button id="closeBtn" action="closeAction"/>

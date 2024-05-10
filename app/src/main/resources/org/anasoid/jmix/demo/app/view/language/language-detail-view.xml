@@ -16,11 +16,15 @@
         <action id="saveAction" type="detail_saveClose"/>
         <action id="closeAction" type="detail_close"/>
     </actions>
-    <layout>
-        <formLayout id="form" dataContainer="languageDc">
-            <textField id="idField" property="id"/>
-            <textField id="nameField" property="name"/>
-        </formLayout>
+    <layout alignItems="STRETCH"
+            padding="false" spacing="false"
+            expand="contentBox">
+        <vbox id="contentBox" classNames="overflow-auto">
+            <formLayout id="form" dataContainer="languageDc">
+                <textField id="idField" property="id"/>
+                <textField id="nameField" property="name"/>
+            </formLayout>
+        </vbox>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
             <button id="closeBtn" action="closeAction"/>

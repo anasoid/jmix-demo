@@ -22,25 +22,29 @@
         <action id="saveAction" type="detail_saveClose"/>
         <action id="closeAction" type="detail_close"/>
     </actions>
-    <layout>
-        <formLayout id="form" dataContainer="itemDc">
-            <textField id="codeField" property="code"/>
-        </formLayout>
-        <h4 text="msg://org.anasoid.jmix.demo.core.entity.catalog/Categorie.products"/>
-        <hbox id="buttonsPanel" classNames="buttons-panel">
-            <button action="productsDataGrid.add"/>
-            <button action="productsDataGrid.exclude"/>
-        </hbox>
-        <dataGrid id="productsDataGrid" dataContainer="productsDc" width="100%" minHeight="20em">
-            <actions>
-                <action id="add" type="list_add"/>
-                <action id="exclude" type="list_exclude"/>
-            </actions>
-            <columns>
-                <column property="code"/>
-                <column property="catalogVersion"/>
-            </columns>
-        </dataGrid>
+    <layout alignItems="STRETCH"
+            padding="false" spacing="false"
+            expand="contentBox">
+        <vbox id="contentBox" classNames="overflow-auto">
+            <formLayout id="form" dataContainer="itemDc">
+                <textField id="codeField" property="code"/>
+            </formLayout>
+            <h4 text="msg://org.anasoid.jmix.demo.core.entity.catalog/Categorie.products"/>
+            <hbox id="buttonsPanel" classNames="buttons-panel">
+                <button action="productsDataGrid.add"/>
+                <button action="productsDataGrid.exclude"/>
+            </hbox>
+            <dataGrid id="productsDataGrid" dataContainer="productsDc" width="100%" minHeight="20em">
+                <actions>
+                    <action id="add" type="list_add"/>
+                    <action id="exclude" type="list_exclude"/>
+                </actions>
+                <columns>
+                    <column property="code"/>
+                    <column property="catalogVersion"/>
+                </columns>
+            </dataGrid>
+        </vbox>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
             <button id="closeBtn" action="closeAction"/>

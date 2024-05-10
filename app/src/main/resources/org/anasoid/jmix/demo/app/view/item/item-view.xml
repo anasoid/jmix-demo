@@ -2,11 +2,14 @@
 <view xmlns="http://jmix.io/schema/flowui/view"
       title="msg://itemView.title">
 
-    <layout>
-        <formLayout id="item" dataContainer="itemDc">
-            <hbox id="itemMain">
-                <textField id="pkField" property="pk" readOnly="true" required="false" datatype="long"/>
-            </hbox>
-        </formLayout>
+    <layout expand="contentBox">
+        <vbox id="contentBox" classNames="overflow-auto">
+            <formLayout id="item" dataContainer="itemDc">
+                <hbox id="itemMain">
+                    <textField id="pkField" property="pk" readOnly="true" required="false" datatype="long"/>
+
+                </hbox>
+            </formLayout>
+        </vbox>
     </layout>
 </view>
