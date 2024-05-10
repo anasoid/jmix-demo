@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://categorieDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="itemDc"
+                  class="org.anasoid.jmix.demo.core.entity.catalog.Categorie">
+            <fetchPlan extends="_base">
+                <property name="products" fetchPlan="_base">
+                    <property name="catalogVersion" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="productsDc" property="products"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="itemDc">
+            <textField id="codeField" property="code"/>
+        </formLayout>
+        <h4 text="msg://org.anasoid.jmix.demo.core.entity.catalog/Categorie.products"/>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button action="productsDataGrid.add"/>
+            <button action="productsDataGrid.exclude"/>
+        </hbox>
+        <dataGrid id="productsDataGrid" dataContainer="productsDc" width="100%" minHeight="20em">
+            <actions>
+                <action id="add" type="list_add"/>
+                <action id="exclude" type="list_exclude"/>
+            </actions>
+            <columns>
+                <column property="code"/>
+                <column property="catalogVersion"/>
+            </columns>
+        </dataGrid>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>

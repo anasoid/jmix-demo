@@ -31,7 +31,6 @@
             <properties include=".*"/>
         </genericFilter>
         <hbox id="buttonsPanel" classNames="buttons-panel">
-            <button id="addBtn" action="catalogsDataGrid.add"/>
             <button id="createBtn" action="catalogsDataGrid.create"/>
             <button id="editBtn" action="catalogsDataGrid.edit"/>
             <button id="removeBtn" action="catalogsDataGrid.remove"/>

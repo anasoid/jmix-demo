@@ -28,7 +28,6 @@
         <vbox id="catalogVersions" >
             <dataGrid dataContainer="catalogVersionsDc" width="100%" id="catalogVersionsDataGrid">
                 <actions>
-                    <action id="add" type="list_add"/>
                     <action id="create" type="list_create"/>
                     <action id="edit" type="list_edit"/>
                     <action id="remove" type="list_remove"/>
@@ -39,6 +38,7 @@
             </dataGrid>
 
         </vbox>
+
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
             <button id="closeBtn" action="closeAction"/>
