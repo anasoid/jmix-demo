@@ -6,7 +6,6 @@
         <instance id="catalogDc"
                   class="org.anasoid.jmix.demo.core.entity.catalog.Catalog">
             <fetchPlan extends="_base">
-                <property name="catalogVersions" fetchPlan="_base"/>
             </fetchPlan>
             <collection id="catalogVersionsDc" property="catalogVersions"></collection>
             <loader/>
@@ -25,11 +24,25 @@
             <textField id="nameField" property="name"/>
         </formLayout>
 
+        <h4 text="msg://org.anasoid.jmix.demo.core.entity.catalog/Catalog.catalogVersions"/>
+        <hbox id="catalogVersionsPanel" classNames="buttons-panel">
+            <button action="catalogVersionsDataGrid.create"/>
+            <button action="catalogVersionsDataGrid.edit"/>
+            <button action="catalogVersionsDataGrid.remove"/>
+        </hbox>
         <vbox id="catalogVersions" >
             <dataGrid dataContainer="catalogVersionsDc" width="100%" id="catalogVersionsDataGrid">
                 <actions>
-                    <action id="create" type="list_create"/>
-                    <action id="edit" type="list_edit"/>
+                    <action id="create" type="list_create">
+                        <properties>
+                            <property name="openMode" value="DIALOG"/>
+                        </properties>
+                    </action>
+                    <action id="edit" type="list_edit">
+                        <properties>
+                            <property name="openMode" value="DIALOG"/>
+                        </properties>
+                    </action>
                     <action id="remove" type="list_remove"/>
                 </actions>
                 <columns>

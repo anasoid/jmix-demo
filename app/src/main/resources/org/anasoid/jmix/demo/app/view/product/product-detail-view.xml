@@ -8,10 +8,6 @@
                   class="org.anasoid.jmix.demo.core.entity.catalog.Product">
             <fetchPlan extends="_base">
                 <property name="catalogVersion" fetchPlan="_instance_name"/>
-                <property name="localizedAttributes" fetchPlan="_base">
-                    <property name="language" fetchPlan="_base"/>
-                </property>
-                <property name="categories" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
             <collection id="localizedAttributesDc" property="localizedAttributes"/>
@@ -37,10 +33,25 @@
             <datePicker id="startDateField" property="startDate"/>
             <datePicker id="endDateField" property="endDate"/>
         </formLayout>
+        <h4 text="Attributes"/>
+        <hbox id="attributesButtonsPanel" classNames="buttons-panel">
+            <button action="localizedAttributesDataGrid.create"/>
+            <button action="localizedAttributesDataGrid.edit"/>
+            <button action="localizedAttributesDataGrid.remove"/>
+        </hbox>
         <dataGrid id="localizedAttributesDataGrid" dataContainer="localizedAttributesDc" width="100%" minHeight="20em">
             <actions>
-                <action id="add" type="list_add"/>
-                <action id="exclude" type="list_exclude"/>
+                <action id="create" type="list_create">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
+                <action id="edit" type="list_edit">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
+                <action id="remove" type="list_remove"/>
             </actions>
             <columns>
                 <column property="language"/>
@@ -49,12 +60,18 @@
             </columns>
         </dataGrid>
         <h4 text="msg://org.anasoid.jmix.demo.core.entity.catalog/Product.categories"/>
-        <hbox id="buttonsPanel" classNames="buttons-panel">
+        <hbox id="categoriesButtonsPanel" classNames="buttons-panel">
+
             <button action="categoriesDataGrid.add"/>
             <button action="categoriesDataGrid.exclude"/>
         </hbox>
         <dataGrid id="categoriesDataGrid" dataContainer="categoriesDc" width="100%" minHeight="20em">
             <actions>
+                <action id="create" type="list_create">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
                 <action id="add" type="list_add"/>
                 <action id="exclude" type="list_exclude"/>
             </actions>

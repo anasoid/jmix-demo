@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://productLocalizedDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="productLocalizedDc"
+                  class="org.anasoid.jmix.demo.core.entity.catalog.ProductLocalized">
+            <fetchPlan extends="_base">
+                <property name="language" fetchPlan="_base"/>
+                <property name="item" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+        <collection id="languageDl" class="org.anasoid.jmix.demo.core.entity.i18n.Language">
+            <fetchPlan extends="_base"/>
+            <loader id="catalogVersionDl">
+                <query>
+                    <![CDATA[select e from Language e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="productLocalizedDc">
+            <entityComboBox id="languageField" property="language" itemsContainer="languageDl" />
+            <entityPicker id="itemField" property="item" readOnly="true">
+            </entityPicker>
+            <textField id="nameField" property="name"/>
+            <textField id="descriptionField" property="description"/>
+        </formLayout>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>

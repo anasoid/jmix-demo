@@ -1,1 +1,8 @@
 ext.jmixCompositeProjectRoot = true
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://global.repo.jmix.io/repository/public'
+    }
+}

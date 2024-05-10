@@ -20,7 +20,7 @@ public abstract class Localized<T extends AbstractLocalizedItem> extends Abstrac
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ITEM_PK", nullable = false, updatable = false)
-    @NotNull
+    //@NotNull
     private T item;
 
     public Language getLanguage() {

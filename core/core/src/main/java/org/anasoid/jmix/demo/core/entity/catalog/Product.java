@@ -2,6 +2,7 @@ package org.anasoid.jmix.demo.core.entity.catalog;
 
 import io.jmix.core.DeletePolicy;
 import io.jmix.core.MetadataTools;
+import io.jmix.core.entity.annotation.OnDelete;
 import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.DependsOnProperties;
@@ -40,6 +41,7 @@ public class Product extends AbstractLocalizedItem<ProductLocalized> {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private CatalogVersion catalogVersion;
 
+    @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
     @Composition
     private Set<ProductLocalized> localizedAttributes = new HashSet<>();
