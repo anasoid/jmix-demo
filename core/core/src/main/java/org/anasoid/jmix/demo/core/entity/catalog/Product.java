@@ -14,7 +14,10 @@ import jakarta.validation.constraints.NotNull;
 import org.anasoid.jmix.demo.core.entity.i18n.AbstractLocalizedItem;
 import org.anasoid.jmix.demo.core.i18n.LocalContext;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @JmixEntity
@@ -44,7 +47,7 @@ public class Product extends AbstractLocalizedItem<ProductLocalized> {
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
     @Composition
-    private Set<ProductLocalized> localizedAttributes = new HashSet<>();
+    private Set<ProductLocalized> localizedAttributes;
 
     @JoinTable(name = "CORE_CATEGORIE_PRODUCT_LINK",
             joinColumns = @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PK"),
