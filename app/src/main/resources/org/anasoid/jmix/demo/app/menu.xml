@@ -10,6 +10,8 @@
                       title="msg://org.anasoid.jmix.demo.app.view.catalogversion/catalogVersionListView.title"/>
                 <item view="core_Categorie.list"
                       title="msg://org.anasoid.jmix.demo.app.view.categorie/categorieListView.title"/>
+                <item view="core_Product.list"
+                      title="msg://org.anasoid.jmix.demo.app.view.product/productListView.title"/>
             </menu>
             <menu id="system" title="System" opened="false">
                 <item view="Language.list"

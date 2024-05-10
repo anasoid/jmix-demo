@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://productDetailView.title"
+      focusComponent="form"
+      extends="org/anasoid/jmix/demo/app/view/item/auditableItem-view.xml">
+    <data>
+        <instance id="itemDc"
+                  class="org.anasoid.jmix.demo.core.entity.catalog.Product">
+            <fetchPlan extends="_base">
+                <property name="catalogVersion" fetchPlan="_instance_name"/>
+                <property name="localizedAttributes" fetchPlan="_base">
+                    <property name="language" fetchPlan="_base"/>
+                </property>
+                <property name="categories" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="localizedAttributesDc" property="localizedAttributes"/>
+            <collection id="categoriesDc" property="categories"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="itemDc">
+            <textField id="codeField" property="code"/>
+            <datePicker id="startDateField" property="startDate"/>
+            <datePicker id="endDateField" property="endDate"/>
+            <entityPicker id="catalogVersionField" property="catalogVersion">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+        </formLayout>
+        <dataGrid id="localizedAttributesDataGrid" dataContainer="localizedAttributesDc" width="100%" minHeight="20em">
+            <columns>
+                <column property="name"/>
+                <column property="description"/>
+                <column property="language"/>
+            </columns>
+        </dataGrid>
+        <h4 text="msg://org.anasoid.jmix.demo.core.entity.catalog/Product.categories"/>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button action="categoriesDataGrid.add"/>
+            <button action="categoriesDataGrid.exclude"/>
+        </hbox>
+        <dataGrid id="categoriesDataGrid" dataContainer="categoriesDc" width="100%" minHeight="20em">
+            <actions>
+                <action id="add" type="list_add"/>
+                <action id="exclude" type="list_exclude"/>
+            </actions>
+            <columns>
+                <column property="code"/>
+            </columns>
+        </dataGrid>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>
