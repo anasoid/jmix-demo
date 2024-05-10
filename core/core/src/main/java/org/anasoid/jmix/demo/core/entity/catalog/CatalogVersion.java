@@ -1,5 +1,7 @@
 package org.anasoid.jmix.demo.core.entity.catalog;
 
+import io.jmix.core.DeletePolicy;
+import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -18,6 +20,7 @@ public class CatalogVersion extends AbstractAuditableItem {
     @NotNull
     private String version;
 
+    @OnDeleteInverse(DeletePolicy.DENY)
     @JoinColumn(name = "CATALOG", nullable = false)
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

@@ -10,14 +10,13 @@ import jakarta.validation.constraints.NotNull;
 import org.anasoid.jmix.demo.core.entity.i18n.AbstractLocalizedItem;
 import org.anasoid.jmix.demo.core.i18n.LocalContext;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @JmixEntity
-@Table(name = "CORE_PRODUCT")
+@Table(name = "CORE_PRODUCT", uniqueConstraints = {
+        @UniqueConstraint(name = "IDX_CORE_PRODUCT_UNQ", columnNames = {"CODE", "CATALOG_VERSION"})
+})
 @Entity(name = "core_Product")
 public class Product extends AbstractLocalizedItem<ProductLocalized> {
 
@@ -38,9 +37,38 @@ public class Product extends AbstractLocalizedItem<ProductLocalized> {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private CatalogVersion catalogVersion;
 
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
     @Composition
     private Set<ProductLocalized> localizedAttributes = new HashSet<>();
+    @JoinTable(name = "CORE_CATEGORIE_PRODUCT_LINK",
+            joinColumns = @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PK"),
+            inverseJoinColumns = @JoinColumn(name = "CATEGORIE_ID", referencedColumnName = "PK"))
+    @ManyToMany
+    private List<Categorie> categories;
+
+    public List<Categorie> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Categorie> categories) {
+        this.categories = categories;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public CatalogVersion getCatalogVersion() {
+        return catalogVersion;
+    }
 
     @Override
     public Set<ProductLocalized> getLocalizedAttributes() {

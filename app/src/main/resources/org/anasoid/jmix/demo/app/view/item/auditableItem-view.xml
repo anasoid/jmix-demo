@@ -6,7 +6,7 @@
             <hbox id="itemMain">
                 <textField id="pkField" property="pk" readOnly="true" required="false" datatype="long"/>
                 <accordion colspan="3">
-                    <accordionPanel id="audit" opened="false">
+                    <accordionPanel id="audit" summaryText="audit" opened="false">
                         <hbox id="auditItemMain">
                             <textField id="createdDateField" property="createdDate" readOnly="true"
                                        datatype="dateTime"/>
