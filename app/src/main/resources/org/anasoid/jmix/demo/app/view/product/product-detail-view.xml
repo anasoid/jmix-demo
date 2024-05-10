@@ -67,11 +67,6 @@
         </hbox>
         <dataGrid id="categoriesDataGrid" dataContainer="categoriesDc" width="100%" minHeight="20em">
             <actions>
-                <action id="create" type="list_create">
-                    <properties>
-                        <property name="openMode" value="DIALOG"/>
-                    </properties>
-                </action>
                 <action id="add" type="list_add"/>
                 <action id="exclude" type="list_exclude"/>
             </actions>

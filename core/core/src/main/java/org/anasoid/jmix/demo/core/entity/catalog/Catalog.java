@@ -1,6 +1,7 @@
 package org.anasoid.jmix.demo.core.entity.catalog;
 
 import io.jmix.core.MetadataTools;
+import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
@@ -28,6 +29,7 @@ public class Catalog extends AbstractAuditableItem {
     private String name;
 
     @OneToMany(mappedBy = "catalog", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Composition
     private Set<CatalogVersion> catalogVersions;
 
     public Set<CatalogVersion> getCatalogVersions() {
