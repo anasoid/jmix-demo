@@ -35,9 +35,10 @@
         <vbox id="contentBox" classNames="overflow-auto">
             <formLayout id="form" dataContainer="itemDc">
                 <textField id="codeField" property="code"/>
+
                 <entityComboBox id="catalogVersionField" property="catalogVersion" itemsContainer="catalogVersionDc"/>
-                <datePicker id="startDateField" property="startDate"/>
-                <datePicker id="endDateField" property="endDate"/>
+                <textField id="nameField" property="name" readOnly="true"/>
+                <textArea id="descriptionField" property="description"/>
             </formLayout>
             <tabSheet id="main" width="100%">
 
@@ -90,7 +91,12 @@
                         </dataGrid>
                     </vbox>
                 </tab>
-
+                <tab id="administration" label="administration">
+                    <formLayout id="form" dataContainer="itemDc">
+                        <datePicker id="startDateField" property="startDate"/>
+                        <datePicker id="endDateField" property="endDate"/>
+                    </formLayout>
+                </tab>
             </tabSheet>
         </vbox>
 

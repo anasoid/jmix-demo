@@ -4,10 +4,7 @@ import io.jmix.core.DeletePolicy;
 import io.jmix.core.MetadataTools;
 import io.jmix.core.entity.annotation.OnDelete;
 import io.jmix.core.entity.annotation.OnDeleteInverse;
-import io.jmix.core.metamodel.annotation.Composition;
-import io.jmix.core.metamodel.annotation.DependsOnProperties;
-import io.jmix.core.metamodel.annotation.InstanceName;
-import io.jmix.core.metamodel.annotation.JmixEntity;
+import io.jmix.core.metamodel.annotation.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -84,6 +81,7 @@ public class Product extends AbstractLocalizedItem<ProductLocalized> {
         return localizedAttributes;
     }
 
+    @JmixProperty
     public String getName() {
         //With fallback language as English
         Map<String, ProductLocalized> toMap = localizedAttributes.stream().collect(Collectors.toMap(t -> t.getLanguage().getId(), t -> t));
@@ -98,6 +96,7 @@ public class Product extends AbstractLocalizedItem<ProductLocalized> {
         return toMap.get(LocalContext.getCurrentLocale()).getName();
     }
 
+    @JmixProperty
     public String getDescription() {
 // With fallback language as English
         Map<String, ProductLocalized> toMap = localizedAttributes.stream().collect(Collectors.toMap(t -> t.getLanguage().getId(), t -> t));
