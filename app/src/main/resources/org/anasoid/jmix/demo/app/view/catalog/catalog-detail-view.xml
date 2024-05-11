@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
       title="msg://catalogDetailView.title"
-      focusComponent="form">
+      focusComponent="form"
+      extends="org/anasoid/jmix/demo/app/view/item/auditableItem-view.xml">
     <data>
-        <instance id="catalogDc"
+        <instance id="itemDc"
                   class="org.anasoid.jmix.demo.core.entity.catalog.Catalog">
             <fetchPlan extends="_base">
             </fetchPlan>
@@ -22,39 +23,46 @@
             padding="false" spacing="false"
             expand="contentBox">
         <vbox id="contentBox" classNames="overflow-auto">
-            <formLayout id="form" dataContainer="catalogDc">
-                <textField id="idField" property="id"/>
-                <textField id="nameField" property="name"/>
-            </formLayout>
+            <tabSheet>
+                <tab id="mainTab" label="Main">
+                    <vbox id="mainTabContent">
+                        <formLayout id="form" dataContainer="itemDc">
+                            <textField id="idField" property="id"/>
+                            <textField id="nameField" property="name"/>
+                        </formLayout>
 
-            <h4 text="msg://org.anasoid.jmix.demo.core.entity.catalog/Catalog.catalogVersions"/>
-            <hbox id="catalogVersionsPanel" classNames="buttons-panel">
-                <button action="catalogVersionsDataGrid.create"/>
-                <button action="catalogVersionsDataGrid.edit"/>
-                <button action="catalogVersionsDataGrid.remove"/>
-            </hbox>
-            <vbox id="catalogVersions">
-                <dataGrid dataContainer="catalogVersionsDc" width="100%" id="catalogVersionsDataGrid">
-                    <actions>
-                        <action id="create" type="list_create">
-                            <properties>
-                                <property name="openMode" value="DIALOG"/>
-                            </properties>
-                        </action>
-                        <action id="edit" type="list_edit">
-                            <properties>
-                                <property name="openMode" value="DIALOG"/>
-                            </properties>
-                        </action>
-                        <action id="remove" type="list_remove"/>
-                    </actions>
-                    <columns>
-                        <column property="version"/>
-                    </columns>
-                </dataGrid>
+                        <h4 text="msg://org.anasoid.jmix.demo.core.entity.catalog/Catalog.catalogVersions"/>
+                        <hbox id="catalogVersionsPanel" classNames="buttons-panel">
+                            <button action="catalogVersionsDataGrid.create"/>
+                            <button action="catalogVersionsDataGrid.edit"/>
+                            <button action="catalogVersionsDataGrid.remove"/>
+                        </hbox>
+                        <vbox id="catalogVersions">
+                            <dataGrid dataContainer="catalogVersionsDc" width="100%" id="catalogVersionsDataGrid">
+                                <actions>
+                                    <action id="create" type="list_create">
+                                        <properties>
+                                            <property name="openMode" value="DIALOG"/>
+                                        </properties>
+                                    </action>
+                                    <action id="edit" type="list_edit">
+                                        <properties>
+                                            <property name="openMode" value="DIALOG"/>
+                                        </properties>
+                                    </action>
+                                    <action id="remove" type="list_remove"/>
+                                </actions>
+                                <columns>
+                                    <column property="version"/>
+                                </columns>
+                            </dataGrid>
 
-            </vbox>
+                        </vbox>
+                    </vbox>
+                </tab>
+            </tabSheet>
         </vbox>
+
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
             <button id="closeBtn" action="closeAction"/>

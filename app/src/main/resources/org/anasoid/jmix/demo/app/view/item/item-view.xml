@@ -2,14 +2,23 @@
 <view xmlns="http://jmix.io/schema/flowui/view"
       title="msg://itemView.title">
 
-    <layout expand="contentBox">
-        <vbox id="contentBox" classNames="overflow-auto">
-            <formLayout id="item" dataContainer="itemDc">
-                <hbox id="itemMain">
-                    <textField id="pkField" property="pk" readOnly="true" required="false" datatype="long"/>
-
-                </hbox>
-            </formLayout>
+    <layout alignItems="STRETCH"
+            padding="false" spacing="false"
+            expand="contentBox">
+        <vbox id="contentBox" classNames="overflow-auto" padding="false" spacing="false">
+            <tabSheet width="100%" themeNames="small">
+                <tab id="mainTab" label="Main">
+                    <vbox id="mainTabContent"/>
+                </tab>
+                <tab id="administrationTab" label="Administration">
+                    <vbox id="administrationTabContent">
+                        <formLayout id="item" dataContainer="itemDc">
+                            <textField id="pkField" property="pk" label="pk" readOnly="true" required="false"
+                                       datatype="long"/>
+                        </formLayout>
+                    </vbox>
+                </tab>
+            </tabSheet>
         </vbox>
     </layout>
 </view>

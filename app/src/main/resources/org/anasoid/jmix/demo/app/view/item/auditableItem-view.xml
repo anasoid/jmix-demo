@@ -3,21 +3,31 @@
       title="msg://auditableItemView.title" extends="org/anasoid/jmix/demo/app/view/item/item-view.xml">
     <layout expand="contentBox">
         <vbox id="contentBox" classNames="overflow-auto">
-            <formLayout id="item" dataContainer="itemDc">
-                <hbox id="itemMain">
-                    <textField id="pkField" property="pk" readOnly="true" required="false" datatype="long"/>
-                    <details summaryText="audit" colspan="3" opened="false">
-                        <hbox id="auditItemMain">
-                            <textField id="createdDateField" property="createdDate" readOnly="true"
-                                       datatype="dateTime"/>
-                            <textField id="lastModifiedDateField" property="lastModifiedDate" readOnly="true"
-                                       datatype="dateTime"/>
-                            <textField id="revisionField" property="revision" readOnly="true" datatype="int"/>
+            <tabSheet width="100%">
+                <tab id="mainTab" label="Main">
+                    <vbox id="mainTabContent"/>
+                </tab>
+                <tab id="administrationTab" label="Administration">
+                    <vbox id="administrationTabContent">
+                        <formLayout id="item" dataContainer="itemDc">
+                            <textField id="pkField" label="pk" property="pk" readOnly="true" required="false"
+                                       datatype="long"/>
+                            <details summaryText="Audit" colspan="3" opened="true" themeNames="filled">
+                                <hbox id="auditItemMain">
+                                    <textField id="createdDateField" property="createdDate" readOnly="true"
+                                               datatype="dateTime"/>
+                                    <textField id="lastModifiedDateField" property="lastModifiedDate"
+                                               readOnly="true"
+                                               datatype="dateTime"/>
+                                    <textField id="revisionField" property="revision" readOnly="true"
+                                               datatype="int"/>
+                                </hbox>
+                            </details>
 
-                        </hbox>
-                    </details>
-                </hbox>
-            </formLayout>
+                        </formLayout>
+                    </vbox>
+                </tab>
+            </tabSheet>
         </vbox>
     </layout>
 </view>

@@ -33,69 +33,85 @@
     </actions>
     <layout expand="contentBox">
         <vbox id="contentBox" classNames="overflow-auto">
-            <formLayout id="form" dataContainer="itemDc">
-                <textField id="codeField" property="code"/>
+            <tabSheet>
+                <tab id="mainTab" label="Main">
+                    <vbox id="mainTabContent">
+                        <formLayout id="form" dataContainer="itemDc">
+                            <textField id="codeField" property="code"/>
 
-                <entityComboBox id="catalogVersionField" property="catalogVersion" itemsContainer="catalogVersionDc"/>
-                <textField id="nameField" property="name" readOnly="true"/>
-                <textArea id="descriptionField" property="description"/>
-            </formLayout>
-            <tabSheet id="main" width="100%">
+                            <entityComboBox id="catalogVersionField" property="catalogVersion"
+                                            itemsContainer="catalogVersionDc"/>
+                            <textField id="nameField" property="name" readOnly="true"/>
+                            <textArea id="descriptionField" property="description"/>
+                        </formLayout>
+                        <tabSheet id="main" width="100%">
 
-                <tab id="localized" label="Localized">
-                    <vbox id="localizedAttributesDataGridWrapper" classNames="contrast-panel" minHeight="30em">
-                        <hbox id="attributesButtonsPanel" classNames="buttons-panel">
-                            <button action="localizedAttributesDataGrid.create"/>
-                            <button action="localizedAttributesDataGrid.edit"/>
-                            <button action="localizedAttributesDataGrid.remove"/>
-                        </hbox>
-                        <dataGrid id="localizedAttributesDataGrid" dataContainer="localizedAttributesDc" width="100%"
-                                  minHeight="20em">
-                            <actions>
-                                <action id="create" type="list_create">
-                                    <properties>
-                                        <property name="openMode" value="DIALOG"/>
-                                    </properties>
-                                </action>
-                                <action id="edit" type="list_edit">
-                                    <properties>
-                                        <property name="openMode" value="DIALOG"/>
-                                    </properties>
-                                </action>
-                                <action id="remove" type="list_remove"/>
-                            </actions>
-                            <columns>
-                                <column property="language"/>
-                                <column property="name"/>
-                                <column property="description" width="50%"/>
-                            </columns>
-                        </dataGrid>
+                            <tab id="localized" label="Localized">
+                                <vbox id="localizedAttributesDataGridWrapper" classNames="contrast-panel"
+                                      minHeight="30em">
+                                    <hbox id="attributesButtonsPanel" classNames="buttons-panel">
+                                        <button action="localizedAttributesDataGrid.create"/>
+                                        <button action="localizedAttributesDataGrid.edit"/>
+                                        <button action="localizedAttributesDataGrid.remove"/>
+                                    </hbox>
+                                    <dataGrid id="localizedAttributesDataGrid" dataContainer="localizedAttributesDc"
+                                              width="100%"
+                                              minHeight="20em">
+                                        <actions>
+                                            <action id="create" type="list_create">
+                                                <properties>
+                                                    <property name="openMode" value="DIALOG"/>
+                                                </properties>
+                                            </action>
+                                            <action id="edit" type="list_edit">
+                                                <properties>
+                                                    <property name="openMode" value="DIALOG"/>
+                                                </properties>
+                                            </action>
+                                            <action id="remove" type="list_remove"/>
+                                        </actions>
+                                        <columns>
+                                            <column property="language"/>
+                                            <column property="name"/>
+                                            <column property="description" width="50%"/>
+                                        </columns>
+                                    </dataGrid>
+                                </vbox>
+                            </tab>
+                            <tab id="categories"
+                                 label="msg://org.anasoid.jmix.demo.core.entity.catalog/Product.categories">
+                                <vbox id="categoriesDataGridWrapper" classNames="contrast-panel" minHeight="30em">
+                                    <h4 text="msg://org.anasoid.jmix.demo.core.entity.catalog/Product.categories"/>
+                                    <hbox id="categoriesButtonsPanel" classNames="buttons-panel">
+
+                                        <button action="categoriesDataGrid.add"/>
+                                        <button action="categoriesDataGrid.exclude"/>
+                                    </hbox>
+                                    <dataGrid id="categoriesDataGrid" dataContainer="categoriesDc" width="100%"
+                                              minHeight="20em">
+                                        <actions>
+                                            <action id="add" type="list_add"/>
+                                            <action id="exclude" type="list_exclude"/>
+                                        </actions>
+                                        <columns>
+                                            <column property="code"/>
+                                        </columns>
+                                    </dataGrid>
+                                </vbox>
+                            </tab>
+
+                        </tabSheet>
                     </vbox>
                 </tab>
-                <tab id="categories" label="msg://org.anasoid.jmix.demo.core.entity.catalog/Product.categories">
-                    <vbox id="categoriesDataGridWrapper" classNames="contrast-panel" minHeight="30em">
-                        <h4 text="msg://org.anasoid.jmix.demo.core.entity.catalog/Product.categories"/>
-                        <hbox id="categoriesButtonsPanel" classNames="buttons-panel">
-
-                            <button action="categoriesDataGrid.add"/>
-                            <button action="categoriesDataGrid.exclude"/>
-                        </hbox>
-                        <dataGrid id="categoriesDataGrid" dataContainer="categoriesDc" width="100%" minHeight="20em">
-                            <actions>
-                                <action id="add" type="list_add"/>
-                                <action id="exclude" type="list_exclude"/>
-                            </actions>
-                            <columns>
-                                <column property="code"/>
-                            </columns>
-                        </dataGrid>
+                <tab id="administrationTab" label="Administration">
+                    <vbox id="administrationTabContent">
+                        <details id="details" summaryText="Details" opened="true" themeNames="filled" width="100%">
+                            <formLayout id="formAdmin" dataContainer="itemDc">
+                                <datePicker id="startDateField" property="startDate"/>
+                                <datePicker id="endDateField" property="endDate"/>
+                            </formLayout>
+                        </details>
                     </vbox>
-                </tab>
-                <tab id="administration" label="administration">
-                    <formLayout id="formAdmin" dataContainer="itemDc">
-                        <datePicker id="startDateField" property="startDate"/>
-                        <datePicker id="endDateField" property="endDate"/>
-                    </formLayout>
                 </tab>
             </tabSheet>
         </vbox>

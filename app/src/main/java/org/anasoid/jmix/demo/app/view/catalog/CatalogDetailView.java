@@ -10,6 +10,6 @@ import io.jmix.flowui.view.*;
 @Route(value = "catalogs-detail/:id", layout = MainView.class)
 @ViewController("core_Catalog.detail")
 @ViewDescriptor("catalog-detail-view.xml")
-@EditedEntityContainer("catalogDc")
+@EditedEntityContainer("itemDc")
 public class CatalogDetailView extends StandardDetailView<Catalog> {
 }

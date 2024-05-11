@@ -23,15 +23,21 @@
             padding="false" spacing="false"
             expand="contentBox">
         <vbox id="contentBox" classNames="overflow-auto">
-            <formLayout id="form" dataContainer="itemDc">
-                <textField id="versionField" property="version"/>
-                <entityPicker id="catalogField" property="catalog">
-                    <actions>
-                        <action id="entityLookup" type="entity_lookup"/>
-                        <action id="entityClear" type="entity_clear"/>
-                    </actions>
-                </entityPicker>
-            </formLayout>
+            <tabSheet>
+                <tab id="mainTab" label="Main">
+                    <vbox id="mainTabContent">
+                        <formLayout id="form" dataContainer="itemDc">
+                            <textField id="versionField" property="version"/>
+                            <entityPicker id="catalogField" property="catalog">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </formLayout>
+                    </vbox>
+                </tab>
+            </tabSheet>
         </vbox>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
