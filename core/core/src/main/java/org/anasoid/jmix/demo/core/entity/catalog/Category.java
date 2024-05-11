@@ -11,10 +11,10 @@ import org.anasoid.jmix.demo.core.listener.CategoryListener;
 import java.util.List;
 
 @JmixEntity
-@Table(name = "CORE_CATEGORIE")
-@Entity(name = "core_Categorie")
+@Table(name = "CORE_CATEGORY")
+@Entity(name = "core_Category")
 @EntityListeners(CategoryListener.class)
-public class Categorie extends AbstractAuditableItem {
+public class Category extends AbstractAuditableItem {
 
 
     @InstanceName
@@ -23,7 +23,7 @@ public class Categorie extends AbstractAuditableItem {
     @NotNull
     private String code;
 
-    @JoinTable(name = "CORE_CATEGORIE_PRODUCT_LINK",
+    @JoinTable(name = "CORE_CATEGORY_PRODUCT_LINK",
             joinColumns = @JoinColumn(name = "CATEGORIE_ID", referencedColumnName = "PK"),
             inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PK"))
     @ManyToMany

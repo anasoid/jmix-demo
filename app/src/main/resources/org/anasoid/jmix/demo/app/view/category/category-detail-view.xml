@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
-      title="msg://categorieDetailView.title"
+      title="msg://categoryDetailView.title"
       focusComponent="form"
       extends="org/anasoid/jmix/demo/app/view/item/auditableItem-view.xml">
     <data>
         <instance id="itemDc"
-                  class="org.anasoid.jmix.demo.core.entity.catalog.Categorie">
+                  class="org.anasoid.jmix.demo.core.entity.catalog.Category">
             <fetchPlan extends="_base">
                 <property name="products" fetchPlan="_base">
                     <property name="catalogVersion" fetchPlan="_instance_name"/>
@@ -32,7 +32,7 @@
                         <formLayout id="form" dataContainer="itemDc">
                             <textField id="codeField" property="code"/>
                         </formLayout>
-                        <h4 text="msg://org.anasoid.jmix.demo.core.entity.catalog/Categorie.products"/>
+                        <h4 text="msg://Category"/>
                         <hbox id="buttonsPanel" classNames="buttons-panel">
                             <button action="productsDataGrid.add"/>
                             <button action="productsDataGrid.exclude"/>

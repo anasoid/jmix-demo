@@ -48,17 +48,17 @@ public class Product extends AbstractLocalizedItem<ProductLocalized> {
     @Composition
     private Set<ProductLocalized> localizedAttributes;
 
-    @JoinTable(name = "CORE_CATEGORIE_PRODUCT_LINK",
+    @JoinTable(name = "CORE_CATEGORY_PRODUCT_LINK",
             joinColumns = @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PK"),
             inverseJoinColumns = @JoinColumn(name = "CATEGORIE_ID", referencedColumnName = "PK"))
     @ManyToMany
-    private List<Categorie> categories;
+    private List<Category> categories;
 
-    public List<Categorie> getCategories() {
+    public List<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<Categorie> categories) {
+    public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
 
@@ -86,6 +86,9 @@ public class Product extends AbstractLocalizedItem<ProductLocalized> {
     @JmixProperty
     public String getName() {
         //With fallback language as English
+        if (localizedAttributes == null) {
+            return "";
+        }
         Map<String, ProductLocalized> toMap = localizedAttributes.stream().collect(Collectors.toMap(t -> t.getLanguage().getId(), t -> t));
 
         if (toMap.get(LocalContext.getCurrentLocale()) == null) {
@@ -101,6 +104,9 @@ public class Product extends AbstractLocalizedItem<ProductLocalized> {
     @JmixProperty
     public String getDescription() {
 // With fallback language as English
+        if (localizedAttributes == null) {
+            return "";
+        }
         Map<String, ProductLocalized> toMap = localizedAttributes.stream().collect(Collectors.toMap(t -> t.getLanguage().getId(), t -> t));
         if (toMap.get(LocalContext.getCurrentLocale()) == null) {
             if (toMap.get(LocalContext.getDefaultLocale()) == null) {
