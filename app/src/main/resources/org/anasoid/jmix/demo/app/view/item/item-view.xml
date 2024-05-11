@@ -12,10 +12,17 @@
                 </tab>
                 <tab id="administrationTab" label="Administration">
                     <vbox id="administrationTabContent">
-                        <formLayout id="item" dataContainer="itemDc">
-                            <textField id="pkField" property="pk" label="pk" readOnly="true" required="false"
-                                       datatype="long"/>
-                        </formLayout>
+
+                        <details id="technicalDetail" summaryText="Technical" opened="true" themeNames="filled"
+                                 width="100%">
+                            <formLayout id="item" dataContainer="itemDc">
+                                <hbox id="technicalMain">
+                                    <textField id="pkField" label="PK" property="pk" readOnly="true" required="false"
+                                               datatype="long"/>
+                                </hbox>
+                            </formLayout>
+                        </details>
+
                     </vbox>
                 </tab>
             </tabSheet>

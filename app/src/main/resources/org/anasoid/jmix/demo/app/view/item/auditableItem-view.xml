@@ -9,22 +9,25 @@
                 </tab>
                 <tab id="administrationTab" label="Administration">
                     <vbox id="administrationTabContent">
-                        <formLayout id="item" dataContainer="itemDc">
-                            <textField id="pkField" label="pk" property="pk" readOnly="true" required="false"
-                                       datatype="long"/>
-                            <details summaryText="Audit" colspan="3" opened="true" themeNames="filled">
-                                <hbox id="auditItemMain">
-                                    <textField id="createdDateField" property="createdDate" readOnly="true"
-                                               datatype="dateTime"/>
-                                    <textField id="lastModifiedDateField" property="lastModifiedDate"
+
+
+                        <details id="technicalDetail">
+                            <formLayout id="item" dataContainer="itemDc">
+                                <hbox id="technicalMain">
+                                    <textField id="createdDateField" property="createdDate" label="CreatedDate"
                                                readOnly="true"
                                                datatype="dateTime"/>
-                                    <textField id="revisionField" property="revision" readOnly="true"
+                                    <textField id="lastModifiedDateField" property="lastModifiedDate"
+                                               label="LastModifiedDate"
+                                               readOnly="true"
+                                               datatype="dateTime"/>
+                                    <textField id="revisionField" property="revision" readOnly="true" label="Revision"
                                                datatype="int"/>
                                 </hbox>
-                            </details>
+                            </formLayout>
+                        </details>
 
-                        </formLayout>
+
                     </vbox>
                 </tab>
             </tabSheet>
