@@ -6,12 +6,14 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.anasoid.jmix.demo.core.entity.AbstractAuditableItem;
+import org.anasoid.jmix.demo.core.listener.CategoryListener;
 
 import java.util.List;
 
 @JmixEntity
 @Table(name = "CORE_CATEGORIE")
 @Entity(name = "core_Categorie")
+@EntityListeners(CategoryListener.class)
 public class Categorie extends AbstractAuditableItem {
 
 

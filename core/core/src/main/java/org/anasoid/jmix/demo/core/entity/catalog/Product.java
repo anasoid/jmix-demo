@@ -10,6 +10,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.anasoid.jmix.demo.core.entity.i18n.AbstractLocalizedItem;
 import org.anasoid.jmix.demo.core.i18n.LocalContext;
+import org.anasoid.jmix.demo.core.listener.ProductListener;
 
 import java.util.Date;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
         @UniqueConstraint(name = "IDX_CORE_PRODUCT_UNQ", columnNames = {"CODE", "CATALOG_VERSION"})
 })
 @Entity(name = "core_Product")
+@EntityListeners(ProductListener.class)
 public class Product extends AbstractLocalizedItem<ProductLocalized> {
 
     @NotBlank
