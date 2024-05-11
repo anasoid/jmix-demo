@@ -6,18 +6,16 @@
             <formLayout id="item" dataContainer="itemDc">
                 <hbox id="itemMain">
                     <textField id="pkField" property="pk" readOnly="true" required="false" datatype="long"/>
-                    <accordion colspan="3">
-                        <accordionPanel id="audit" summaryText="audit" opened="false">
-                            <hbox id="auditItemMain">
-                                <textField id="createdDateField" property="createdDate" readOnly="true"
-                                           datatype="dateTime"/>
-                                <textField id="lastModifiedDateField" property="lastModifiedDate" readOnly="true"
-                                           datatype="dateTime"/>
-                                <textField id="revisionField" property="revision" readOnly="true" datatype="int"/>
+                    <details summaryText="audit" colspan="3" opened="false">
+                        <hbox id="auditItemMain">
+                            <textField id="createdDateField" property="createdDate" readOnly="true"
+                                       datatype="dateTime"/>
+                            <textField id="lastModifiedDateField" property="lastModifiedDate" readOnly="true"
+                                       datatype="dateTime"/>
+                            <textField id="revisionField" property="revision" readOnly="true" datatype="int"/>
 
-                            </hbox>
-                        </accordionPanel>
-                    </accordion>
+                        </hbox>
+                    </details>
                 </hbox>
             </formLayout>
         </vbox>

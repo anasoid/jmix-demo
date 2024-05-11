@@ -92,7 +92,7 @@
                     </vbox>
                 </tab>
                 <tab id="administration" label="administration">
-                    <formLayout id="form" dataContainer="itemDc">
+                    <formLayout id="formAdmin" dataContainer="itemDc">
                         <datePicker id="startDateField" property="startDate"/>
                         <datePicker id="endDateField" property="endDate"/>
                     </formLayout>
