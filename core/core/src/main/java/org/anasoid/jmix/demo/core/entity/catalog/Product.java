@@ -9,14 +9,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.anasoid.jmix.demo.core.entity.i18n.AbstractLocalizedItem;
-import org.anasoid.jmix.demo.core.i18n.LocalContext;
 import org.anasoid.jmix.demo.core.listener.ProductListener;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @JmixEntity
 @Table(name = "CORE_PRODUCT", uniqueConstraints = {
@@ -85,37 +82,14 @@ public class Product extends AbstractLocalizedItem<ProductLocalized> {
 
     @JmixProperty
     public String getName() {
-        //With fallback language as English
-        if (localizedAttributes == null) {
-            return "";
-        }
-        Map<String, ProductLocalized> toMap = localizedAttributes.stream().collect(Collectors.toMap(t -> t.getLanguage().getId(), t -> t));
 
-        if (toMap.get(LocalContext.getCurrentLocale()) == null) {
-            if (toMap.get(LocalContext.getDefaultLocale()) == null) {
-                return null;
-            } else {
-                return toMap.get(LocalContext.getDefaultLocale()).getName();
-            }
-        }
-        return toMap.get(LocalContext.getCurrentLocale()).getName();
+        return getLocalizedValue(ProductLocalized::getName);
     }
+
 
     @JmixProperty
     public String getDescription() {
-// With fallback language as English
-        if (localizedAttributes == null) {
-            return "";
-        }
-        Map<String, ProductLocalized> toMap = localizedAttributes.stream().collect(Collectors.toMap(t -> t.getLanguage().getId(), t -> t));
-        if (toMap.get(LocalContext.getCurrentLocale()) == null) {
-            if (toMap.get(LocalContext.getDefaultLocale()) == null) {
-                return null;
-            } else {
-                return toMap.get(LocalContext.getDefaultLocale()).getDescription();
-            }
-        }
-        return toMap.get(LocalContext.getCurrentLocale()).getDescription();
+        return getLocalizedValue(ProductLocalized::getDescription);
     }
 
     public void setCode(@NotBlank String code) {
