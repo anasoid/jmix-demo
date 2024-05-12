@@ -24,7 +24,7 @@ public class Category extends AbstractAuditableItem {
     private String code;
 
     @JoinTable(name = "CORE_CATEGORY_PRODUCT_LINK",
-            joinColumns = @JoinColumn(name = "CATEGORIE_ID", referencedColumnName = "PK"),
+            joinColumns = @JoinColumn(name = "CATEGORY_ID", referencedColumnName = "PK"),
             inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PK"))
     @ManyToMany
     private List<Product> products;

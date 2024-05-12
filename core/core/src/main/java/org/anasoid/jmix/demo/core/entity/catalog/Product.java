@@ -47,7 +47,7 @@ public class Product extends AbstractLocalizedItem<ProductLocalized> {
 
     @JoinTable(name = "CORE_CATEGORY_PRODUCT_LINK",
             joinColumns = @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PK"),
-            inverseJoinColumns = @JoinColumn(name = "CATEGORIE_ID", referencedColumnName = "PK"))
+            inverseJoinColumns = @JoinColumn(name = "CATEGORY_ID", referencedColumnName = "PK"))
     @ManyToMany
     private List<Category> categories;
 
