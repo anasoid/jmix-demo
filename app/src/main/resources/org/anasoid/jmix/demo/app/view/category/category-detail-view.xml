@@ -32,7 +32,7 @@
                         <formLayout id="form" dataContainer="itemDc">
                             <textField id="codeField" property="code"/>
                         </formLayout>
-                        <h4 text="msg://Category"/>
+                        <h4 text="msg://Product"/>
                         <hbox id="buttonsPanel" classNames="buttons-panel">
                             <button action="productsDataGrid.add"/>
                             <button action="productsDataGrid.exclude"/>

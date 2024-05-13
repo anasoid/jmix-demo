@@ -8,7 +8,7 @@ import com.vaadin.flow.router.Route;
 import io.jmix.flowui.view.*;
 
 @Route(value = "languages", layout = MainView.class)
-@ViewController("Language.list")
+@ViewController("core_Language.list")
 @ViewDescriptor("language-list-view.xml")
 @LookupComponent("languagesDataGrid")
 @DialogMode(width = "64em")

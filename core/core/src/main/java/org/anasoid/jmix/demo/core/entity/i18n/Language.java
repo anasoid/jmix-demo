@@ -10,8 +10,8 @@ import jakarta.validation.constraints.NotBlank;
 
 
 @JmixEntity
-@Table(name = "LANGUAGE")
-@Entity
+@Table(name = "CORE_LANGUAGE")
+@Entity(name = "core_Language")
 public class Language {
 
     @NotBlank

@@ -8,7 +8,7 @@ import com.vaadin.flow.router.Route;
 import io.jmix.flowui.view.*;
 
 @Route(value = "languages/:id", layout = MainView.class)
-@ViewController("Language.detail")
+@ViewController("core_Language.detail")
 @ViewDescriptor("language-detail-view.xml")
 @EditedEntityContainer("languageDc")
 public class LanguageDetailView extends StandardDetailView<Language> {

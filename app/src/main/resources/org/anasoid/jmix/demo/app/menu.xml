@@ -14,7 +14,7 @@
                       title="msg://org.anasoid.jmix.demo.app.view.product/productListView.title"/>
             </menu>
             <menu id="system" title="System" opened="false">
-                <item view="Language.list"
+                <item view="core_Language.list"
                       title="msg://org.anasoid.jmix.demo.app.view.language/languageListView.title"/>
             </menu>
         </menu>

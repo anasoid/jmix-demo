@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
     <changeSet id="1" author="core">
-        <createTable tableName="LANGUAGE">
+        <createTable tableName="CORE_LANGUAGE">
             <column name="ID" type="VARCHAR(255)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="PK_LANGUAGE"/>
             </column>
@@ -17,27 +17,27 @@
 
     <changeSet id="10" author="core">
 
-        <insert tableName="LANGUAGE" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
+        <insert tableName="CORE_LANGUAGE" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
             <column name="ID" value="en"/>
             <column name="NAME" value="English"/>
         </insert>
-        <insert tableName="LANGUAGE" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
+        <insert tableName="CORE_LANGUAGE" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
             <column name="ID" value="de"/>
             <column name="NAME" value="Germany"/>
         </insert>
-        <insert tableName="LANGUAGE" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
+        <insert tableName="CORE_LANGUAGE" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
             <column name="ID" value="fr"/>
             <column name="NAME" value="French"/>
         </insert>
-        <insert tableName="LANGUAGE" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
+        <insert tableName="CORE_LANGUAGE" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
             <column name="ID" value="ja"/>
             <column name="NAME" value="Japanese"/>
         </insert>
-        <insert tableName="LANGUAGE" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
+        <insert tableName="CORE_LANGUAGE" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
             <column name="ID" value="zh"/>
             <column name="NAME" value="Chinese"/>
         </insert>
-        <insert tableName="LANGUAGE" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
+        <insert tableName="CORE_LANGUAGE" dbms="postgresql, mssql, hsqldb, oracle, mysql, mariadb">
             <column name="ID" value="es"/>
             <column name="NAME" value="Spanish"/>
         </insert>
